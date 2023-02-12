@@ -191,4 +191,4 @@ def Train(n_threads, n_cycles, arr_attributes):
         __Update__[n_update_blocks, n_threads_per_block](per_1, per_2, result, size, n_update_threads, rng_states)
         win += np.count_nonzero(result.copy_to_host()==2)
     
-    return win, per_2.copy_to_host()
+    return win, np.sum(per_2.copy_to_host(), axis=0).reshape((2**size, 41))
