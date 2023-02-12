@@ -155,7 +155,7 @@ def Train(n_threads, n_cycles, arr_attributes):
 
     result = cuda.to_device(np.full(n_threads, 1, dtype=np.int8))
 
-    n_threads_per_block = 64
+    n_threads_per_block = 16
     n_update_threads = n_threads * (2**size)
     n_update_blocks = n_update_threads // n_threads_per_block + 1
     if n_update_threads % n_threads_per_block == 0.0:
